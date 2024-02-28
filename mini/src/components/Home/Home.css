@@ -1,0 +1,7 @@
+.contain{
+    background-image: url('D:\MINI\mini\src\components\assets\hospital.webp');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #FFFFFF;
+}
