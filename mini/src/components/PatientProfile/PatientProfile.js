@@ -57,7 +57,7 @@ const Appointment = () => {
                 <div className='student_profile form-row'>
                 <div className='student_profile form-column'>
                     <div className='student_profile profile-title'>
-                        <h2>Appointment</h2>
+                        <h2>Patient Profile</h2>
                     </div>
                     <br></br>
                     <label htmlFor="fullName">Full Name<span>*</span>:</label>
@@ -100,19 +100,13 @@ const Appointment = () => {
                     </div>
                 </div>
                 <div className='student_profile form-row'>
-                    <div className='student_profile form-column'>
-                        <label htmlFor="time">Time:</label>
-                        <input type="time" name="time" required/>
-                    </div>
-                
-                    <div className='student_profile form-column'>
-                        <label htmlFor="Date">Date:</label>
-                        <input type="date" name="date" required/>
-                    </div>
-
-                    <div className='student_profile form-column'>
-                        <label htmlFor="City">City:</label>
-                        <input type="text" name="city" placeholder='City' required/>
+                <div className='student_profile form-column'>
+                        <label>Address<span>*</span>:</label>
+                        <div className="student_profile address-row">
+                            <input type="text" id="city" name="city" placeholder='City' required/>
+                            <input type="text" id="state" name="state" placeholder='State' required/>
+                            <input type="text" id="zipCode" name="zipCode" placeholder='Zip Code' required/>
+                        </div>
                     </div>
                 </div>
                 <button type="submit">Submit</button>

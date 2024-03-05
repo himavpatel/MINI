@@ -19,6 +19,11 @@ export default function Navbar() {
           id="navbarNav"
         >
           <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+              <Link className="nav-link navbar-brand" to="/Home">
+                Home
+              </Link>
+            </li>
             <li className="nav-item active">
               <Link className="nav-link navbar-brand" to="/Appointment">
                 Book Appointment
@@ -27,6 +32,11 @@ export default function Navbar() {
             <li className="nav-item">
               <Link className="nav-link navbar-brand" to="/Loginsignup">
                 LoginSignup
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link className="nav-link navbar-brand" to="/ContactUs">
+                ContactUs
               </Link>
             </li>
             <li className="nav-item">

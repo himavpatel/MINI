@@ -8,7 +8,7 @@ const Home = () => {
     <Navbar />
     <div style={{ backgroundImage:`url(${image})`,backgroundRepeat:"no-repeat",backgroundSize:"cover" ,height:"680px", width:"1532px"
     }}>
-      Home
+      
     </div>
     </>
   )
