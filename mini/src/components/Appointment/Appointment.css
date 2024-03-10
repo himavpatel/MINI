@@ -1,95 +1,25 @@
-/* .body{
-    background: linear-gradient(to right, #a35ac3, #9b59b6, #a55ec8, #a166ba);
-  } */
-  .student_profile.container {
-    width: 1000px;
-    height: 700px;
-    margin-left: 230px;
-    padding: 20px;
-    justify-content: center;
-    border-radius: 5px;
-    border: 2px solid #f4f1f1;
-    /* margin-top: 4px; */
-    background-color: aliceblue;
-      
-  }
-  
-  .student_profile.form-row {
-    display: flex;
-    margin-bottom: 20px;
-    margin-left: 40px;
-    margin-top: 5px;
-  }
-  
-  .student_profile.form-column {
-    flex: 1;
-     margin-right: 80px; 
-  }
-  
-  .student_profile.profile-title {
-    display: flex;
-    align-items: center;
-   
-  }
-  
-  .student_profile.profile-title h2 {
-   margin-right: 90px;
-  }
-  
-  .student_profile.student-registration-form {
-    flex: 1;
-    border-radius: 5px;
-  }
-  
-  .student_profile label {
-    display: block;
-    margin-bottom: 15px;
-  }
-  
-  .student_profile input[type="text"],
-  .student_profile input[type="email"],
-  .student_profile input[type="date"],
-  .student_profile input[type="time"],
-  .student_profile input[type="number"] {
-    width: 100%;
-    padding-top: 13px;
-   padding-bottom: 13px;
-    border-radius: 5px;
-    
-    border: 1px solid #ccc;
-  }
-  
-  .student_profile button {
-    width: 845px;
-    padding: 10px;
-    background-color: rgb(134, 3, 154);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 40px;
-  }
-  
-  .student_profile button:hover {
-    background-color: rgb(224, 109, 27);
-  }
-  
-  .student_profile.name-row {
-    display: flex;
-    gap: 30px; /* Adjust the spacing between first name and last name */
-  }
-  .student_profile.name-row #firstName,#lastName{
-    width: 330px;
-    padding-top: 13px;
-    padding-bottom: 13px;
-  }
-  .student_profile.profile-title {
-    display: flex;
-    align-items: center;
-    margin-left: 200px; /* Adjust the margin to create space between circle and title */
-  }
-  
-  .student_profile.address-row {
-    display: flex;
-    gap: 20px; /* Adjust the spacing between city and state */
-  }
+.appointment {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.appointment-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
