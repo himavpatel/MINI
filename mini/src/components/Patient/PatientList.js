@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PatientService from '../services/PatientService';
+import ApiService from '../services/apiService';
 import './PatientList.css';
 
 const PatientList = () => {
@@ -8,7 +8,7 @@ const PatientList = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const data = await PatientService.getAllPatients();
+        const data = await ApiService.getAllPatients();
         setPatients(data);
       } catch (error) {
         console.error('Error fetching patients:', error);

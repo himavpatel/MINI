@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PrescriptionService from '../services/prescriptionService';
+import ApiService from '../services/apiService';
 import Prescription from './Prescription';
 
 const PrescriptionList = () => {
@@ -8,7 +8,7 @@ const PrescriptionList = () => {
   useEffect(() => {
     async function fetchPrescriptions() {
       try {
-        const prescriptions = await PrescriptionService.getAllPrescriptions();
+        const prescriptions = await ApiService.getAllPrescriptions();
         setPrescriptions(prescriptions);
       } catch (error) {
         console.error('Error fetching prescriptions:', error);

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import PrescriptionService from '../services/prescriptionService';
+import ApiService from '../services/apiService';
+import { useNavigate } from 'react-router-dom';
 
 const PrescriptionForm = () => {
+  const navigate = useNavigate();
   const [patientId, setPatientId] = useState('');
   const [doctorId, setDoctorId] = useState('');
   const [medications, setMedications] = useState('');
@@ -16,7 +18,7 @@ const PrescriptionForm = () => {
       instructions,
     };
     try {
-      await PrescriptionService.createPrescription(newPrescription);
+      await ApiService.createPrescription(newPrescription);
       setPatientId('');
       setDoctorId('');
       setMedications('');
@@ -27,7 +29,7 @@ const PrescriptionForm = () => {
   };
 
   return (
-    <div>
+    <div className="patient-form">
       <h2>Add New Prescription</h2>
       <form onSubmit={handleSubmit}>
         <label>Patient ID:</label>
@@ -38,7 +40,9 @@ const PrescriptionForm = () => {
         <input type="text" value={medications} onChange={(e) => setMedications(e.target.value)} />
         <label>Instructions:</label>
         <input type="text" value={instructions} onChange={(e) => setInstructions(e.target.value)} />
-        <button type="submit">Submit</button>
+        <nav>
+            <button className="button" onClick={()=> navigate ("/PrescriptionList")}>Sumbit</button>
+        </nav>
       </form>
     </div>
   );

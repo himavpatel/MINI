@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { ApiService } from "./ApiService";
+import ApiService from '../services/apiService';
+import { useNavigate } from 'react-router-dom';
 
 const AppointmentForm = () => {
+  const navigate = useNavigate();
   const [appointmentData, setAppointmentData] = useState({
     doctorId: "",
     patientId: "",
@@ -27,65 +29,29 @@ const AppointmentForm = () => {
   };
 
   return (
-    <div className="appointment-form">
+    <div className="patient-form">
       <h2>Create Appointment</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="doctorId">Doctor ID:</label>
-          <input
-            type="text"
-            id="doctorId"
-            name="doctorId"
-            value={appointmentData.doctorId}
-            onChange={handleChange}
-            placeholder="Enter Doctor ID"
-          />
-        </div>
-        <div>
-          <label htmlFor="patientId">Patient ID:</label>
-          <input
-            type="text"
-            id="patientId"
-            name="patientId"
-            value={appointmentData.patientId}
-            onChange={handleChange}
-            placeholder="Enter Patient ID"
-          />
-        </div>
-        <div>
-          <label htmlFor="appointmentTime">Appointment Time:</label>
-          <input
-            type="text"
-            id="appointmentTime"
-            name="appointmentTime"
-            value={appointmentData.appointmentTime}
-            onChange={handleChange}
-            placeholder="Enter Appointment Time"
-          />
-        </div>
-        <div>
-          <label htmlFor="dateOfAppointment">Date of Appointment:</label>
-          <input
-            type="text"
-            id="dateOfAppointment"
-            name="dateOfAppointment"
-            value={appointmentData.dateOfAppointment}
-            onChange={handleChange}
-            placeholder="Enter Date of Appointment"
-          />
-        </div>
-        <div>
-          <label htmlFor="patientName">Patient Name:</label>
-          <input
-            type="text"
-            id="patientName"
-            name="patientName"
-            value={appointmentData.patientName}
-            onChange={handleChange}
-            placeholder="Enter Patient Name"
-          />
-        </div>
-        <button type="submit">Submit</button>
+        
+          <label htmlFor="doctorId">Doctor ID:</label><br></br>
+          <input type="text" id="doctorId" name="doctorId" value={appointmentData.doctorId} onChange={handleChange} placeholder="Enter Doctor ID" />
+        
+       
+          <label htmlFor="patientId">Patient ID:</label><br></br>
+          <input type="text" id="patientId" name="patientId" value={appointmentData.patientId} onChange={handleChange} placeholder="Enter Patient ID" />
+       
+          <label htmlFor="appointmentTime">Appointment Time:</label><br></br>
+          <input type="time" id="appointmentTime" name="appointmentTime" value={appointmentData.appointmentTime} onChange={handleChange}  placeholder="Enter Appointment Time"/>
+        
+          <label htmlFor="dateOfAppointment">Date of Appointment:</label><br></br>
+          <input type="date" id="dateOfAppointment" name="dateOfAppointment" value={appointmentData.dateOfAppointment} onChange={handleChange} placeholder="Enter Date of Appointment"  />
+        
+          <label htmlFor="patientName">Patient Name:</label><br></br>
+          <input  type="text"id="patientName" name="patientName" value={appointmentData.patientName}  onChange={handleChange}  placeholder="Enter Patient Name"  />
+        
+        <nav>
+            <button className="button" onClick={()=> navigate ("/AppointmentList")}>Sumbit</button>
+        </nav>
       </form>
     </div>
   );

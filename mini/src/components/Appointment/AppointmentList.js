@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ApiService } from "./ApiService";
+import ApiService from '../services/apiService';
 import Appointment from "./Appointment";
 
 const AppointmentList = () => {

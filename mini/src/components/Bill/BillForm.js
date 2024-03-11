@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import BillService from '../services/billService';
+import ApiService from '../services/apiService';
+import { useNavigate } from 'react-router-dom';
 
 const BillForm = () => {
+  const navigate = useNavigate();
   const [amount, setAmount] = useState('');
   const [patientId, setPatientId] = useState('');
 
@@ -13,7 +15,7 @@ const BillForm = () => {
       // Add other fields here if needed
     };
     try {
-      await BillService.createBill(newBill);
+      await ApiService.createBill(newBill);
       // Reset form fields after successful submission
       setAmount('');
       setPatientId('');
@@ -24,31 +26,18 @@ const BillForm = () => {
   };
 
   return (
-    <div>
+    <div className="patient-form">
       <h2>Add New Bill</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Amount:</label>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="Enter amount"
-            required
-          />
-        </div>
-        <div>
-          <label>Patient ID:</label>
-          <input
-            type="number"
-            value={patientId}
-            onChange={(e) => setPatientId(e.target.value)}
-            placeholder="Enter patient ID"
-            required
-          />
-        </div>
+    
+          <label>Amount:</label><br></br>
+          <input type="number"  value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount" required />
+          <label>Patient ID:</label><br></br>
+          <input type="number" value={patientId} onChange={(e) => setPatientId(e.target.value)}  placeholder="Enter patient ID"  required />
         {/* Add other input fields for additional bill details */}
-        <button type="submit">Submit</button>
+        <nav>
+            <button className="button" onClick={()=> navigate ("/BillList")}>Sumbit</button>
+        </nav>
       </form>
     </div>
   );

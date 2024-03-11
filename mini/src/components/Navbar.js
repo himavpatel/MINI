@@ -25,23 +25,28 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item active">
-              <Link className="nav-link navbar-brand" to="/Appointment">
-                Book Appointment
+              <Link className="nav-link navbar-brand" to="/AppointmentForm">
+                Book Appointment Form
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link navbar-brand" to="/Loginsignup">
-                LoginSignup
+              <Link className="nav-link navbar-brand" to="/PatientForm">
+                PatientForm
               </Link>
             </li>
             <li className="nav-item active">
-              <Link className="nav-link navbar-brand" to="/ContactUs">
-                ContactUs
+              <Link className="nav-link navbar-brand" to="/DoctorForm">
+              DoctorForm
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link navbar-brand" to="/Logout">
-                Logout
+              <Link className="nav-link navbar-brand" to="/PrescriptionForm">
+              PrescriptionForm
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link navbar-brand" to="/BillForm">
+              BillForm
               </Link>
             </li>
           </ul>

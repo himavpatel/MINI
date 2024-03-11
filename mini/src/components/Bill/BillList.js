@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BillService from '../services/billService';
+import ApiService from '../services/apiService';
 import Bill from './Bill';
 
 const BillList = () => {
@@ -11,7 +11,7 @@ const BillList = () => {
 
   const fetchBills = async () => {
     try {
-      const data = await BillService.getAllBills();
+      const data = await ApiService.getAllBills();
       setBills(data);
     } catch (error) {
       console.error('Error fetching bills:', error);
