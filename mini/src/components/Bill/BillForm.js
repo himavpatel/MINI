@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ApiService from '../services/apiService';
+import ApiService from '../services/ApiService';
 import { useNavigate } from 'react-router-dom';
 
 const BillForm = () => {
@@ -9,16 +9,14 @@ const BillForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newBill = {
-      amount,
-      patientId,
-      // Add other fields here if needed
-    };
+    const newBill = { amount,patientId, };
     try {
-      await ApiService.createBill(newBill);
+      const response = await ApiService.createBill(newBill);
+      console.log("Bill added",response.data);
+      navigate('/bills');
       // Reset form fields after successful submission
-      setAmount('');
-      setPatientId('');
+      // setAmount('');
+      // setPatientId('');
       // Reset other fields as needed
     } catch (error) {
       console.error('Error creating bill:', error);
@@ -34,10 +32,8 @@ const BillForm = () => {
           <input type="number"  value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount" required />
           <label>Patient ID:</label><br></br>
           <input type="number" value={patientId} onChange={(e) => setPatientId(e.target.value)}  placeholder="Enter patient ID"  required />
-        {/* Add other input fields for additional bill details */}
-        <nav>
-            <button className="button" onClick={()=> navigate ("/BillList")}>Sumbit</button>
-        </nav>
+      
+            <button className="button">Sumbit</button>
       </form>
     </div>
   );

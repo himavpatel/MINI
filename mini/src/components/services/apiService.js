@@ -5,6 +5,10 @@ const baseUrl = 'http://localhost:8080/api';
 const apiService = {
   // Appointments
   getAllAppointments: async () => {
+    return  axios.get(`${baseUrl}/appointments`);
+      
+  },
+  getAppointments: async () => {
     try {
       const response = await axios.get(`${baseUrl}/appointments`);
       return response.data;
@@ -13,7 +17,6 @@ const apiService = {
       throw error;
     }
   },
-
   getAppointmentById: async (id) => {
     try {
       const response = await axios.get(`${baseUrl}/appointments/${id}`);
@@ -25,13 +28,9 @@ const apiService = {
   },
 
   createAppointment: async (appointment) => {
-    try {
-      const response = await axios.post(`${baseUrl}/appointments`, appointment);
-      return response.data;
-    } catch (error) {
-      console.error('Error creating appointment:', error);
-      throw error;
-    }
+  // appointment.appointmentTime = new Date(appointment.appointmentTime).toISOString();
+  // appointment.dateOfAppointment = new Date(appointment.dateOfAppointment).toISOString();
+   return axios.post(`${baseUrl}/appointments`, appointment);
   },
 
   updateAppointment: async (id, appointmentDetails) => {
@@ -45,12 +44,7 @@ const apiService = {
   },
 
   deleteAppointment: async (id) => {
-    try {
-      await axios.delete(`${baseUrl}/appointments/${id}`);
-    } catch (error) {
-      console.error('Error deleting appointment:', error);
-      throw error;
-    }
+    return axios.delete(`${baseUrl}/appointments/${id}`);
   },
 
   getAppointmentsByDoctorId: async (doctorId) => {
@@ -74,33 +68,15 @@ const apiService = {
   },
     
   getAllBills: async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/bills`);
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching bills:', error);
-        throw error;
-      }
+      return axios.get(`${baseUrl}/bills`);
     },
   
   getBillById: async (id) => {
-      try {
-        const response = await axios.get(`${baseUrl}/bills/${id}`);
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching bill by ID:', error);
-        throw error;
-      }
+     return  axios.get(`${baseUrl}/bills/${id}`);
     },
   
   createBill: async (bill) => {
-      try {
-        const response = await axios.post(`${baseUrl}/bills`, bill);
-        return response.data;
-      } catch (error) {
-        console.error('Error creating bill:', error);
-        throw error;
-      }
+     return axios.post(`${baseUrl}/bills`, bill);
     },
   
   updateBill: async (id, billDetails) => {
@@ -114,24 +90,10 @@ const apiService = {
     },
   
     deleteBill: async (id) => {
-      try {
-        await axios.delete(`${baseUrl}/bills/${id}`);
-      } catch (error) {
-        console.error('Error deleting bill:', error);
-        throw error;
-      }
+    return  axios.delete(`${baseUrl}/bills/${id}`);
     },
   
     // Prescriptions
-    getAllPrescriptions: async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/prescriptions`);
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching prescriptions:', error);
-        throw error;
-      }
-    },
   
     getPrescriptionById: async (id) => {
       try {
@@ -142,17 +104,7 @@ const apiService = {
         throw error;
       }
     },
-  
-    createPrescription: async (prescription) => {
-      try {
-        const response = await axios.post(`${baseUrl}/prescriptions`, prescription);
-        return response.data;
-      } catch (error) {
-        console.error('Error creating prescription:', error);
-        throw error;
-      }
-    },
-  
+
     updatePrescription: async (id, prescriptionDetails) => {
       try {
         const response = await axios.put(`${baseUrl}/prescriptions/${id}`, prescriptionDetails);
@@ -163,24 +115,39 @@ const apiService = {
       }
     },
   
+    getAllPrescriptions: async () => {
+     return axios.get(`${baseUrl}/prescriptions`);
+    },
+
+    createPrescription: async (prescription) => {
+      return  axios.post(`${baseUrl}/prescriptions`, prescription);
+    },
+
     deletePrescription: async (id) => {
-      try {
-        await axios.delete(`${baseUrl}/prescriptions/${id}`);
-      } catch (error) {
-        console.error('Error deleting prescription:', error);
-        throw error;
-      }
+        return  axios.delete(`${baseUrl}/prescriptions/${id}`);
     },
 
     getAllPatients: async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/patients`);
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching patients:', error);
-        throw error;
-      }
+      return axios.get(`${baseUrl}/patients`);
     },
+  
+    createPatient: async (patient) => {
+      return axios.post(`${baseUrl}/patients`, patient);
+    },
+  
+    deletePatient: async (id) => {
+      return axios.delete(`${baseUrl}/patients/${id}`);
+    },
+
+    // getAllPatients: async () => {
+    //   try {
+    //     const response = await axios.get(`${baseUrl}/patients`);
+    //     return response.data;
+    //   } catch (error) {
+    //     console.error('Error fetching patients:', error);
+    //     throw error;
+    //   }
+    // },
   
     getPatientById: async (id) => {
       try {
@@ -192,15 +159,15 @@ const apiService = {
       }
     },
   
-    createPatient: async (patient) => {
-      try {
-        const response = await axios.post(`${baseUrl}/patients`, patient);
-        return response.data;
-      } catch (error) {
-        console.error('Error creating patient:', error);
-        throw error;
-      }
-    },
+    // createPatient: async (patient) => {
+    //   try {
+    //     const response = await axios.post(`${baseUrl}/patients`, patient);
+    //     return response.data;
+    //   } catch (error) {
+    //     console.error('Error creating patient:', error);
+    //     throw error;
+    //   }
+    // },
   
     updatePatient: async (id, patientDetails) => {
       try {
@@ -212,14 +179,7 @@ const apiService = {
       }
     },
   
-    deletePatient: async (id) => {
-      try {
-        await axios.delete(`${baseUrl}/patients/${id}`);
-      } catch (error) {
-        console.error('Error deleting patient:', error);
-        throw error;
-      }
-    },
+
   
     searchPatientsByName: async (name) => {
       try {
@@ -253,13 +213,7 @@ const apiService = {
   
     // Doctors
     getAllDoctors: async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/doctors`);
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching doctors:', error);
-        throw error;
-      }
+      return axios.get(`${baseUrl}/doctors`);
     },
   
     getDoctorById: async (id) => {
@@ -273,13 +227,7 @@ const apiService = {
     },
   
     createDoctor: async (doctor) => {
-      try {
-        const response = await axios.post(`${baseUrl}/doctors`, doctor);
-        return response.data;
-      } catch (error) {
-        console.error('Error creating doctor:', error);
-        throw error;
-      }
+     return  axios.post(`${baseUrl}/doctors`, doctor);
     },
   
     updateDoctor: async (id, doctorDetails) => {
@@ -293,12 +241,7 @@ const apiService = {
     },
   
     deleteDoctor: async (id) => {
-      try {
-        await axios.delete(`${baseUrl}/doctors/${id}`);
-      } catch (error) {
-        console.error('Error deleting doctor:', error);
-        throw error;
-      }
+     return axios.delete(`${baseUrl}/doctors/${id}`);
     },
   
     getDoctorsBySpecialization: async (specialization) => {

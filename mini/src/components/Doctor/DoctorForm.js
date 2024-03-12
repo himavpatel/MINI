@@ -1,7 +1,5 @@
-// DoctorForm.js
-
 import React, { useState } from 'react';
-import ApiService from '../services/apiService';
+import ApiService from '../services/ApiService';
 import { useNavigate } from 'react-router-dom';
 
 const DoctorForm = () => {
@@ -21,40 +19,37 @@ const DoctorForm = () => {
       experience,
       phoneNumber,
       emailId,
-      // Add more fields here
+     
     };
     try {
-      await ApiService.createDoctor(newDoctor);
-      // Optionally: Reset form fields after successful submission
-      setName('');
-      setSpecialization('');
-      setExperience('');
-      setPhoneNumber('');
-      setEmailId('');
-      // Reset other fields as needed
+      const response = await ApiService.createDoctor(newDoctor);
+      console.log("Doctor added",response.data);
+      // setName('');
+      // setSpecialization('');
+      // setExperience('');
+      // setPhoneNumber('');
+      // setEmailId('');
+      navigate('/doctors'); 
     } catch (error) {
       console.error('Error creating doctor:', error);
     }
   };
 
   return (
-    <div className="patient-form">
+    <div className="doctor-form">
       <h2>Add New Doctor</h2>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label><br></br>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <label>Specialization:</label><br></br>
-        <input type="text" value={specialization} onChange={(e) => setSpecialization(e.target.value)} />
-        <label>Experience:</label><br></br>
-        <input type="number" value={experience} onChange={(e) => setExperience(e.target.value)} />
-        <label>Phone Number:</label><br></br>
-        <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-        <label>Email ID:</label><br></br>
-        <input type="email" value={emailId} onChange={(e) => setEmailId(e.target.value)} />
-        {/* Add more input fields for other doctor properties */}
-        <nav>
-            <button className="button" onClick={()=> navigate ("/DoctorList")}>Sumbit</button>
-        </nav>
+        <label>Name:</label><br />
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} /><br />
+        <label>Specialization:</label><br />
+        <input type="text" value={specialization} onChange={(e) => setSpecialization(e.target.value)} /><br />
+        <label>Experience:</label><br />
+        <input type="number" value={experience} onChange={(e) => setExperience(e.target.value)} /><br />
+        <label>Phone Number:</label><br />
+        <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} /><br />
+        <label>Email ID:</label><br />
+        <input type="email" value={emailId} onChange={(e) => setEmailId(e.target.value)} /><br />
+        <button className="button" type="submit">Add Doctor</button>
       </form>
     </div>
   );

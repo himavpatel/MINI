@@ -1,57 +1,58 @@
-import React, { useState } from "react";
-import ApiService from '../services/apiService';
+// AppointmentForm.js
+
+import React, { useState } from 'react';
+import ApiService from '../services/ApiService';
+import './AppointmentForm.css';
 import { useNavigate } from 'react-router-dom';
 
 const AppointmentForm = () => {
   const navigate = useNavigate();
-  const [appointmentData, setAppointmentData] = useState({
-    doctorId: "",
-    patientId: "",
-    appointmentTime: "",
-    dateOfAppointment: "",
-    patientName: ""
-  });
+  const [doctorId, setDoctorId] = useState('');
+  const [patientId, setPatientId] = useState('');
+  const [appointmentTime, setAppointmentTime] = useState('');
+  const [dateOfAppointment, setDateOfAppointment] = useState('');
+  const [patientName, setPatientName] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if any field is empty
+    if (!doctorId || !patientId || !appointmentTime || !dateOfAppointment || !patientName) {
+      console.error('All fields are required.');
+      return;
+    }
+
+    const appointment = { doctorId, patientId, appointmentTime, dateOfAppointment, patientName };
+
     try {
-      await ApiService.createAppointment(appointmentData);
-      alert("Appointment created successfully!");
+      const response = await ApiService.createAppointment(appointment);
+      console.log('Appointment added:', response.data);
+      // setDoctorId('');
+      // setPatientId('');
+      // setAppointmentTime('');
+      // setDateOfAppointment('');
+      // setPatientName('');
+      navigate('/AppointmentList'); // Navigate to the appointment list page
     } catch (error) {
-      console.error("Error creating appointment:", error);
-      alert("Error creating appointment. Please try again.");
+      console.error('Error creating appointment:', error);
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAppointmentData({ ...appointmentData, [name]: value });
-  };
-
   return (
-    <div className="patient-form">
-      <h2>Create Appointment</h2>
+    <div className="appointment-form">
+      <h1>Add New Appointment</h1>
       <form onSubmit={handleSubmit}>
-        
-          <label htmlFor="doctorId">Doctor ID:</label><br></br>
-          <input type="text" id="doctorId" name="doctorId" value={appointmentData.doctorId} onChange={handleChange} placeholder="Enter Doctor ID" />
-        
-       
-          <label htmlFor="patientId">Patient ID:</label><br></br>
-          <input type="text" id="patientId" name="patientId" value={appointmentData.patientId} onChange={handleChange} placeholder="Enter Patient ID" />
-       
-          <label htmlFor="appointmentTime">Appointment Time:</label><br></br>
-          <input type="time" id="appointmentTime" name="appointmentTime" value={appointmentData.appointmentTime} onChange={handleChange}  placeholder="Enter Appointment Time"/>
-        
-          <label htmlFor="dateOfAppointment">Date of Appointment:</label><br></br>
-          <input type="date" id="dateOfAppointment" name="dateOfAppointment" value={appointmentData.dateOfAppointment} onChange={handleChange} placeholder="Enter Date of Appointment"  />
-        
-          <label htmlFor="patientName">Patient Name:</label><br></br>
-          <input  type="text"id="patientName" name="patientName" value={appointmentData.patientName}  onChange={handleChange}  placeholder="Enter Patient Name"  />
-        
-        <nav>
-            <button className="button" onClick={()=> navigate ("/AppointmentList")}>Sumbit</button>
-        </nav>
+        <label>Doctor ID:</label><br />
+        <input type="text" placeholder="Doctor ID" value={doctorId} onChange={(e) => setDoctorId(e.target.value)} /><br />
+        <label>Patient ID:</label><br />
+        <input type="text" placeholder="Patient ID" value={patientId} onChange={(e) => setPatientId(e.target.value)} /><br />
+        <label>Appointment Time:</label><br />
+        <input type="time" value={appointmentTime} onChange={(e) => setAppointmentTime(e.target.value)} /><br />
+        <label>Date of Appointment:</label><br />
+        <input type="date" value={dateOfAppointment} onChange={(e) => setDateOfAppointment(e.target.value)} /><br />
+        <label>Patient Name:</label><br />
+        <input type="text" placeholder="Patient Name" value={patientName} onChange={(e) => setPatientName(e.target.value)} /><br />
+        <button className="button" type="submit">Add Appointment</button>
       </form>
     </div>
   );

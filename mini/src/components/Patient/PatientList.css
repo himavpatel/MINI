@@ -1,14 +1,56 @@
 .patient-list {
-    margin-top: 20px;
+  margin-bottom: 20px;
+  }  
+
+  .patient-list h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
   }
   
   .patient-list ul {
     list-style-type: none;
+    padding: 0;
   }
   
   .patient-list li {
+    margin-bottom: 20px;
+    padding: 20px;
     border: 1px solid #ccc;
-    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .patient-list li div {
     margin-bottom: 10px;
   }
   
+  .patient-list li div:last-child {
+    margin-bottom: 0;
+  }
+
+  .patient-list button {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    margin: 20px;
+    background-color: #5487a7;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .patient-list button:hover {
+    background-color: #47dffa;
+  }
+  
+  .patient-update {
+    margin-top: 30px;
+  }
+  
+  .patient-update h2 {
+    margin-bottom: 10px;
+  }
+  
+  .patient-update  form {
+    display: flex;
+    flex-direction: column;
+  }

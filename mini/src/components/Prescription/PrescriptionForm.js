@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ApiService from '../services/apiService';
+import ApiService from '../services/ApiService';
 import { useNavigate } from 'react-router-dom';
 
 const PrescriptionForm = () => {
@@ -18,11 +18,13 @@ const PrescriptionForm = () => {
       instructions,
     };
     try {
-      await ApiService.createPrescription(newPrescription);
-      setPatientId('');
-      setDoctorId('');
-      setMedications('');
-      setInstructions('');
+      const response = await ApiService.createPrescription(newPrescription);
+      console.log("Prescription added",response.data);
+      // setPatientId('');
+      // setDoctorId('');
+      // setMedications('');
+      // setInstructions('');
+      navigate('/prescriptions'); 
     } catch (error) {
       console.error('Error creating prescription:', error);
     }
@@ -40,9 +42,8 @@ const PrescriptionForm = () => {
         <input type="text" value={medications} onChange={(e) => setMedications(e.target.value)} />
         <label>Instructions:</label>
         <input type="text" value={instructions} onChange={(e) => setInstructions(e.target.value)} />
-        <nav>
-            <button className="button" onClick={()=> navigate ("/PrescriptionList")}>Sumbit</button>
-        </nav>
+            <button className="button" type='submit' >Sumbit</button>
+       
       </form>
     </div>
   );
